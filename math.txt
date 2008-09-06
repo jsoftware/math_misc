@@ -1,0 +1,26 @@
+directory:  system\packages\math
+
+This directory contains mathematical scripts.
+
+bigpi            calculate pi to many places
+brent            Brent's method
+det              determinant definitions
+fermat           fermats factorization
+integer          verbs to generate integer sequences
+integrat         numerical integration
+gcd              GCD as a defined verb
+jacobi           Jacobi's method for eigenvalues
+legendre         Legendre symbol, quadratic reciprocity
+linear           solve linear equations
+makemat          make standard matrices
+matfacto         matrix factorization
+mathutil         math utils
+matutil          matrix utilities
+mean             means
+numbers          Stirling, Euler numbers, etc.
+primutil         prime number utilities
+pollard          Pollard factorization
+poly             polynomial functions
+quatern          Quaternion functions
+spline           cubic spline functions
+svd              Singular Value Decomposition
