@@ -106,4 +106,4 @@ x&u amoeba v y
 
 Note 'Example usage'
  (+/@:*:) amoeba 1e_20 (3 2 $ 1 0 2 1 1 2)  NB. Gets close to minimum at 0 0
-) 
+)
