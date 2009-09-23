@@ -1,7 +1,7 @@
-directory:  system\packages\math
+Addon:  math/misc
 
-This directory contains mathematical scripts.
-
+This Addon directory contains mathematical scripts.
+amoeba           Nelder-Mead minimization for multidimensional optimization
 bigpi            calculate pi to many places
 brent            Brent's method
 det              determinant definitions

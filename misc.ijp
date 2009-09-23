@@ -1,8 +1,9 @@
-NB. project file: /home/chris/deb/addons/math/misc/misc
+NB. project file: c:/users/rsherloc/documents/j602-user/jsrc/addons/math/misc/misc
 
 coclass 'jproject'
 
 PRIMARYFILES=: 0 : 0
+~Addons/math/misc/amoeba
 ~Addons/math/misc/bigpi
 ~Addons/math/misc/brent
 ~Addons/math/misc/contfrac
