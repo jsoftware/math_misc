@@ -1,4 +1,6 @@
-NB. Nelder-Mead minimization, aka the amoeba method
+NB. math/misc/amoeba
+NB. Nelder-Mead multi-dimentional minimization, aka the amoeba method
+NB. version: 1.0.0
 NB. u is the function to be minimized
 NB. n is the terminating volume of the simplex
 NB. y is the starting simplex to use
