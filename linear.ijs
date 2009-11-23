@@ -1,7 +1,7 @@
 NB. math/misc/linear
-NB. solve linear equations
+NB. Solve linear equations
 NB. version: 1.0.0
-NB.
+
 NB. =========================================================
 NB. elimination functions:
 NB.   gauss_elimination    Gauss elimination
@@ -18,14 +18,14 @@ NB. some matrices, jacobi will converge while gauss_seidel does not.
 require 'math/misc/matutil'
 
 NB. =========================================================
-NB. gauss_elimination: - Gauss elimination (partial pivoting)
-NB.  y is matrix
-NB.  x is optional minimum tolerance, default 1e_15.
-NB.     If a column below the current pivot has numbers of magnitude all
-NB.     less then x, it is treated as all zeros.
+NB.*gauss_elimination v Gauss elimination (partial pivoting)
+NB. y is: matrix
+NB. x is: optional minimum tolerance, default 1e_15.
+NB.   If a column below the current pivot has numbers of magnitude all
+NB.   less then x, it is treated as all zeros.
 NB.
 NB. returns 3 elements: matrix;permutation;row swaps
-NB. where: permutation{matrix restores the original row order
+NB.        where: permutation{matrix restores the original row order
 NB.        row swaps is a matrix of rows that were swapped
 gauss_elimination=: 3 : 0
 1e_15 gauss_elimination y
@@ -57,13 +57,12 @@ m;q;>p
 )
 
 NB. =========================================================
-NB. gauss_jordan: Gauss-Jordan elimination (full pivoting)
-NB.  y is matrix
-NB.  x is optional minimum tolerance, default 1e_15.
-NB.     If a column below the current pivot has numbers of magnitude all
-NB.     less then x, it is treated as all zeros.
+NB.*gauss_jordan v Gauss-Jordan elimination (full pivoting)
+NB. y is: matrix
+NB. x is: optional minimum tolerance, default 1e_15.
+NB.   If a column below the current pivot has numbers of magnitude all
+NB.   less then x, it is treated as all zeros.
 NB. if used to compute matrix inverse, first stitch on the identity matrix
-
 gauss_jordan=: 3 : 0
 1e_15 gauss_jordan y
 :
@@ -91,17 +90,14 @@ m
 )
 
 NB. =========================================================
-NB. gauss_seidel
-NB. Solves Ax=B for matrix A, vector B
-NB.   y = A;B
-NB.   x = optional max iterations (20), error tolerance (1e_8), sor (1)
+NB.*gauss_seidel v Solves Ax=B for matrix A, vector B
+NB. y is: A;B
+NB. x is: optional max iterations (20), error tolerance (1e_8), sor (1)
+NB.     sor = successive-over-relaxation constant, between 1 and 2.
+NB.         Default 1 means not used.
+NB.         Set to adjust the convergence, typically between 1.2 and 1.7.
 NB.
-NB. sor = successive-over-relaxation constant, between 1 and 2.
-NB.       Default 1 means not used.
-NB.       Set to adjust the convergence, typically between 1.2 and 1.7.
-NB.
-NB. returns table of convergents
-
+NB. returns: table of convergents
 gauss_seidel=: 3 : 0
 '' gauss_seidel y
 :
@@ -130,12 +126,10 @@ end.
 )
 
 NB. =========================================================
-NB. jacobi_iteration
-NB. Solves Ax=B for matrix A, vector B
-NB.   y = A;B
-NB.   x = optional max iterations (20), error tolerance (1e_8)
-NB. returns table of convergents
-
+NB.*jacobi_iteration v Solves Ax=B for matrix A, vector B
+NB. y is: A;B
+NB. x is: optional max iterations (20), error tolerance (1e_8)
+NB. returns: table of convergents
 jacobi_iteration=: 3 : 0
 '' jacobi_iteration y
 :
@@ -164,12 +158,11 @@ end.
 )
 
 NB. =========================================================
-NB. testing...
-NB.
-NB. (-/ . *  -: determinant) >:?.5 5$10
-NB.
-NB. solve Ax=b for x
-NB.   A=: 6 1 _2 0 0, 0 4 0 _1 0, 1 _1 5 2 1, _1 0 1 5 0,: 0 1 0 _1 3
-NB.   B=: _2.2 _4.4 16.5 _19.8 18.7
-NB.   jacobi_iteration A;B
-NB.   gauss_seidel A;B
+Note 'testing...'
+ (-/ . *  -: determinant) >:?.5 5$10
+ NB. solve Ax=b for x
+ A=: 6 1 _2 0 0, 0 4 0 _1 0, 1 _1 5 2 1, _1 0 1 5 0,: 0 1 0 _1 3
+ B=: _2.2 _4.4 16.5 _19.8 18.7
+ jacobi_iteration A;B
+ gauss_seidel A;B
+)

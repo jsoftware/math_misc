@@ -1,24 +1,24 @@
 NB. math/misc/pollard
 NB. Pollard factorizations
 NB. version: 1.0.0
-NB.
+
 NB. pollardrho       Pollard rho factorization
 NB. pollardpm1       Pollard p-1 factorization
 NB.
 NB. examples:
 NB.
-NB.    [x=. (,*/) x: p: 1e7 30101
+NB.    ]x=. (,*/) x: p: 1e7 30101
 NB. 179424691 351599 63085541930909
 NB.    pollardpm1 {: x
 NB. 351599 335
 NB.
-NB.    [x=. (,pollardrho)  1 + 2 ^ 2 ^ 6x
+NB.    ]x=. (,pollardrho)  1 + 2 ^ 2 ^ 6x
 NB. 18446744073709551617 274177 808
 NB.    (0{x) % 1{x
 NB. 67280421310721
-
 NB. =========================================================
-NB. pollardrho      -  pollard rho factorization
+
+NB.*pollardrho v Pollard rho factorization
 NB.
 NB. form:   [m,[;poly]] pollardrho n
 NB.    n      number to be factored
@@ -27,9 +27,9 @@ NB.    poly   optional polynomial to be used (left argument to p.)
 NB.           default 1 0 1 <> 1 + x^2
 NB.
 NB. returns:  res, count
-NB. where res is 0 = factor not found
-NB.             >0 = proper factor
-NB. count = number of iterations
+NB.     where res is 0 = factor not found
+NB.                 >0 = proper factor
+NB.           count = number of iterations
 pollardrho=: 3 : 0
 '' pollardrho y
 :
@@ -50,14 +50,13 @@ end.
 0, c
 )
 
-NB. =========================================================
-NB. pollard's p-1 algorithm
+NB.*pollardpm1 v Pollard p-1 factorizaton
 NB. returns:  res, count
-NB. where res is 0 = factor not found
-NB.             >0 = proper factor
-NB. count = number of iterations
-NB. x optional maximum iterations, default 10000
-NB. y number to be factored
+NB.     where res is 0 = factor not found
+NB.                 >0 = proper factor
+NB.           count = number of iterations
+NB. x is: optional maximum iterations, default 10000
+NB. y is: number to be factored
 pollardpm1=: 3 : 0
 10000 pollardpm1 y
 :

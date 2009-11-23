@@ -1,7 +1,7 @@
 NB. math/misc/gcd
-NB. calculate GCD
+NB. Calculate GCD
 NB. version: 1.0.0
-NB.
+
 NB. J has a built-in gcd function: +.
 NB.
 NB. This script defines another gcd that returns both the
@@ -9,13 +9,12 @@ NB. gcd of a numeric list, and the coefficents where:
 NB.
 NB.    gcd = +/ numeric_list * coefficients
 
-NB. =========================================================
-NB. gcd
-NB.
+NB. ---------------------------------------------------------
+NB.*gcd v Greatest common denominator
 NB. form: gcd numeric_list
-NB.
-NB. returns 2 elements:   gcd;coefficients
-
+NB. returns 2 elements: gcd;coefficients
+NB.     where: gcd = +/ numeric_list * coefficients
+NB. An alternative to J's built-in gcd function: +.
 gcd=: 3 : 0
 x=. (x: y) ,. =/~ i.#y
 f=. {: <.@%&{. {.

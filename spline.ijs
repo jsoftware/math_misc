@@ -1,13 +1,13 @@
 NB. math/misc/spline
-NB. spline utilities
+NB. Spline utilities
 NB. version: 1.0.0
 
 NB. =========================================================
-NB.*cubicspline v calculate cubic spline
+NB.*cubicspline v Calculate cubic spline
 NB.
-NB. y is a 2-row matrix x ,: f(x)
+NB. y is: 2-row matrix  x ,: f(x)
 NB.
-NB. result is x values;coefficient matrix,one row per interval.
+NB. result: x values;coefficient matrix,one row per interval.
 cubicspline=: 3 : 0
 diff=. }.-}:
 'x y'=. y
@@ -25,12 +25,12 @@ d=. (diff c,0) % 3 * h
 )
 
 NB. =========================================================
-NB.*interspline v  interpolate spline
+NB.*interspline v Interpolate spline
 NB.
-NB. x is a result from cubicspline
-NB. y is a set of x coordinates
+NB. x is: result from cubicspline
+NB. y is: set of x coordinates
 NB.
-NB. returns corresponding f(x) values
+NB. returns: corresponding f(x) values
 interspline=: 4 : 0
 'i m'=. x
 n=. <: +/ i <:/ y
@@ -43,12 +43,11 @@ NB. H=: (i.6) ,: (i.6)^3
 NB. H, (cubicspline H) interspline {.H
 
 NB. =========================================================
-NB.*freespline v calculate spline
+NB.*freespline v Calculate spline
 NB.
-NB. y is a 2-row matrix x ,: f(x)
+NB. y is: 2-row matrix x ,: f(x)
 NB.
-NB. result is x values;coefficient matrix1;coefficient matrix2
-
+NB. result: x values;coefficient matrix1;coefficient matrix2
 freespline=: 3 : 0
 diff=. }.-}:
 'x y'=. y
@@ -72,10 +71,10 @@ x;coeffs1;coeffs2  NB. oldx and 2 tables of coefficients
 )
 
 NB. =========================================================
-NB.*aprxspline v approximate by spline
+NB.*aprxspline v Approximate by spline
 NB.
-NB. x= output from freespline
-NB. y= pt at which to interpolate
+NB. x is: output from freespline
+NB. y is: pt at which to interpolate
 NB. k below picks out row of table to use for poly coeffs
 aprxspline=: 4 : 0
 'oldx coeffs1 coeffs2'=. x

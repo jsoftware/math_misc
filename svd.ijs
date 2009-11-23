@@ -1,5 +1,5 @@
 NB. math/misc/svd
-NB. singular value decomposition
+NB. Singular value decomposition
 NB. version: 1.0.0
 NB.
 NB. for real matrices only
@@ -7,7 +7,7 @@ NB. for real matrices only
 require '~system\packages\math\jacobi.ijs'
 
 NB. =========================================================
-NB. svd
+NB.*svd v Singular value decomposition of matrix y
 NB. returns:  left singular vectors;singular values;right singular vectors
 svd=: 3 : 0
 mat=. y

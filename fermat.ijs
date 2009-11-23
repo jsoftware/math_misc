@@ -1,12 +1,11 @@
 NB. math/misc/fermat
-NB. fermat factorization
+NB. Fermat factorization
 NB. version: 1.0.0
-NB.
-NB. fermatfactor  - find factor of n near square root of n
-NB.                 using Fermat's method
-NB.
-NB. x optional maximum iterations, default 10000
-NB. y number to be factored
+
+NB.*fermatfactor v Find factor of n near square root of n using Fermat's method
+NB. eg:  fermatfactor */ x: p:11000 12000
+NB. x is: optional maximum iterations, default 10000
+NB. y is: number to be factored
 NB.
 NB. starts with x=. >.%:n, and increments by 2 until done
 NB.
@@ -18,8 +17,6 @@ NB.             >0 = proper factor
 NB. count = number of iterations
 NB.
 NB. looks for a,b where n is (a^2) - b^2
-NB.
-NB. e.g.  fermatfactor */ x: p:11000 12000
 fermatfactor=: 3 : 0
 10000 fermatfactor y
 :

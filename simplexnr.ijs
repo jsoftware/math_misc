@@ -2,8 +2,8 @@ NB. math/misc/simplexnr
 NB. Simplex method
 NB. version: 1.0.0
 NB.
-NB. simplexnr  - simplex method following Numerical Recipes in C
-
+NB. see also math/misc/simplex
+NB.
 NB. This implementation follows Numerical Recipes in C, 2/e,
 NB. section 10.8, except that we let the user specify the type of
 NB. each constraint rather than expecting the order <: >: =
@@ -11,11 +11,15 @@ NB. and we use a similar but refined way of handling degenerate pivots
 NB.
 NB. Henry H. Rich (HenryHRich@nc.rr.com), June 2001
 
+NB. simplexnr  - simplex method following Numerical Recipes in C
+
 NB. =========================================================
-NB. Solve restricted form. y is tableau.  x is
-NB. (phase number);(constraint type);(row vbl label);(col vbl label)
-NB. shapes '' ; ((<: #y) - phase number) ; (#y) ; ({:$y)
-NB. where
+NB. solverestricted v Solve restricted form
+NB. y is: tableau.  
+NB. x is: 
+NB.   (phase number);(constraint type);(row vbl label);(col vbl label)
+NB.   shapes '' ; ((<: #y) - phase number) ; (#y) ; ({:$y)
+NB.   where
 NB. phase number is 0 for phase 1, 1 for phase 2.  In phase 1 we are
 NB.  searching for an initial feasible vector; in phase 2 we are finding
 NB.  a final solution.  In phase 1 the auxiliary objective function
@@ -30,7 +34,7 @@ NB.  columns; they are deleted as the columns are
 NB. col vbl labels similarly; the col vbls are the zero variables not in
 NB.  the basis
 NB.
-NB. result is solution, in the form
+NB. result is solution, in the form:
 NB. retcode ; modified tableau ; row vbl numbers ; col vbl numbers
 NB. retcode is 0 (normal), 1 (unbounded) , 2 (infeasible)
 solverestricted =: 4 : 0
@@ -140,7 +144,7 @@ end.
 )
 
 NB. =========================================================
-NB.*v-- simplexnr  run simplex method
+NB.*simplexnr v Run simplex method
 NB. y is the problem:
 NB. (objective function);constraints;(constraint values);(constraint types)[;(fudge constant)]
 NB. There are N variables to be solved for.  The shapes of the

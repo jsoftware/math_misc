@@ -1,19 +1,19 @@
 NB. math/misc/gamesolver
-NB.*solvegame v--  Find optimal mixed strategies for 2-person games
-NB. version: 1.0.0
-NB. Monad.  y is payoff matrix.  Red is at the top of the
-NB. matrix, Blue is on the left; in other words, each
-NB. row of y gives the payoffs to Blue for each of
-NB. Red's responses to one of Blue's plays.  Columns
-NB. give the payoff to Blue for each of his responses to
-NB. one of Red's plays.  Payoffs are payoffs to Blue.
-NB. Result is (Blue Strategy);(Red strategy);Value
-NB. or null if there is an error
-NB.
+NB. Find optimal mixed strategies for 2-person games
 NB. Henry H. Rich (HenryHRich@nc.rr.com), April 2005
+NB. version: 1.0.0
 
 require 'math/misc/simplexnr'
 
+NB.*solvegame v Find optimal mixed strategies for 2-person games
+NB. y is: payoff matrix.  Red is at the top of the matrix,
+NB.     Blue is on the left; in other words, each
+NB.     row of y gives the payoffs to Blue for each of
+NB.     Red's responses to one of Blue's plays.  Columns
+NB.     give the payoff to Blue for each of his responses to
+NB.     one of Red's plays.  Payoffs are payoffs to Blue.
+NB. Result is: (Blue Strategy);(Red strategy);Value
+NB.     or null if there is an error
 solvegame =: 3 : 0"2
 'Bn Rn' =. $y  NB. number of strategies for Blue and Red
 NB. Solve for Red
@@ -81,7 +81,3 @@ NB.
 NB. Blue defends the better installation 3/4 of the time; Red attacks
 NB. the lesser one 3/4 of the time.  Blue's expected undestroyed value is
 NB. 3.25.
-
-
-
-

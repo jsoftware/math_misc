@@ -1,7 +1,7 @@
 NB. math/misc/primutil
-NB. primes    - prime testing programs
+NB. Primes    - prime testing programs
 NB. version: 1.0.0
-NB.
+
 NB. main functions:
 NB.
 NB.  nextprime         next prime number
@@ -16,25 +16,34 @@ NB.
 NB.  inversep          inverse mod p
 NB.
 NB.  smallprimefactors get small prime factors for number
-NB.
-NB.  powermod          x (n powermod) y
-NB.  timesmod          x (n timesmod) y
 
+NB. powermod           x (n powermod) y
+NB. timesmod           x (n timesmod) y
+NB. =========================================================
+
+NB. powermod a   x (n powermod) y
 powermod=: 1 : 'x&|@^'
+
+NB. timesmod a   x (n timesmod) y
 timesmod=: 1 : 'x&|@*'
 
+NB.*prevprime v Previous prime number to y
 prevprime=: _4 & p:
+
+NB.*nextprime v Next prime number after y
 nextprime=: 4 & p:
 
+NB.*primeq v Test for prime
 primeq=: 1 & p:
+
+NB.*primesto v Primes up to y
 primesto=: p: @ i. @ (_1 p: >:)
 
 totient=: 5 & p:
 
 NB. =========================================================
-NB.*carmichaelq v test composite for carmichael number
-NB.
-NB. e.g.
+NB.*carmichaelq v Test composite for Carmichael number
+NB. eg:
 NB.     carmichaelq 41 * 61 * 101
 NB.   1
 NB.
@@ -42,14 +51,14 @@ NB. first few such are:
 NB.     (#~ carmichaelq) (>:}.i.3000) -. primesto 3000
 NB.   561 1105 1729 2465 2821
 NB.
-NB. returns 1 for any prime argument
+NB. returns: 1 for any prime argument
 carmichaelq=: 3 : 0 "0
 n=. (primesto y) -. q: y
 *./ 1 = n (y powermod) y-1
 )
 
 NB. =========================================================
-NB.*inversep v inverse mod p
+NB.*inversep v Inverse mod p
 NB.
 NB. form: p inversep a    where p is a prime
 inversep=: 4 : 0
@@ -66,10 +75,9 @@ x | {. old
 )
 
 NB. =========================================================
-NB.*mersenneq v test if prime p generates a mersenne prime
+NB.*mersenneq v Test if prime p generates a mersenne prime
 NB. i.e. _1+2^p is prime
-NB.
-NB. e.g.
+NB. eg:
 NB.      [x=. (#~ mersenneq) p: i.20
 NB.   2 3 5 7 13 17 19 31 61
 NB.      _1 + 2x ^ x
@@ -85,8 +93,8 @@ f=. m&| @ (-&2) @ *:
 )
 
 NB. =========================================================
-NB.*primepowersto v generate prime powers up y
-NB. e.g.
+NB.*primepowersto v Generate prime powers up to y
+NB. eg:
 NB.      primepowersto 50
 NB.   32 27 25 49 11 13 17 19 23 29 31 37 41 43 47
 primepowersto=: 3 : 0
@@ -98,15 +106,12 @@ p ^ 1 >. (#p) {. w
 )
 
 NB. =========================================================
-NB.*smallprimefactors
-NB. get small primefactors from number
-NB.
-NB. x = # of small primes to use, default 1000
+NB.*smallprimefactors v Get small primefactors from number
+NB. x is: # of small primes to use, default 1000
 NB.
 NB. returns: (small factor list);remaining number
-NB. as extended integers
-NB.
-NB. example:
+NB.          as extended integers
+NB. eg:
 NB.    smallprimefactors */ p: 7x ^ 1 + i.5
 NB. +-----------+----------+
 NB. |19 229 2311|3973658267|

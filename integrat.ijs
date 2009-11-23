@@ -1,7 +1,7 @@
 NB. math/misc/integrat
-NB. various methods for numeric integration
+NB. Various methods for numeric integration
 NB. version: 1.0.0
-NB.
+
 NB. integrate     Aitken extrapolation on Gauss integrals
 NB. simpson       Simpson's method
 NB. adapt         Adaptive Quadrature using Simpson's method
@@ -9,9 +9,7 @@ NB.
 NB. intexample    example using each method
 
 NB. =========================================================
-NB. integrate   (conjunction)
-NB.
-NB. numeric integration
+NB.*integrate c Numeric integration by Aitken extrapolation on Gauss integrals
 NB.
 NB. form: verb integrate int
 NB.   verb is the monadic function to be integrated.
@@ -27,8 +25,7 @@ NB. the interval is divided into at most 2^10 subintervals.
 NB.
 NB. this method has very rapid convergence.
 NB.
-NB. e.g.   43.75 14 = ^&3 integrate 3 4
-NB.
+NB. eg:   43.75 14 = ^&3 integrate 3 4
 integrate=: 2 : 0
 'lower upper sd'=. 3{.y,8
 in=. 5
@@ -55,9 +52,7 @@ end.
 )
 
 NB. =========================================================
-NB. simpson   (conjunction)
-NB.
-NB. numeric integration by Simpson's method
+NB.*simpson c Numeric integration by Simpson's method
 NB.
 NB. form: verb simpson int
 NB.   verb is the monadic function to be integrated.
@@ -68,8 +63,7 @@ NB.     [2]  number of subintervals (default 128)
 NB.
 NB. result is the integral
 NB.
-NB. e.g.   43.75 = ^&3 simpson 3 4
-NB.
+NB. eg:   43.75 = ^&3 simpson 3 4
 simpson=: 2 : 0
 'lower upper int'=. 3{.y,128
 size=. (upper-lower)%int
@@ -78,9 +72,7 @@ size * +/val * 3%~ 1,((int-1)$4 2),1
 )
 
 NB. =========================================================
-NB. adapt   (conjunction)
-NB.
-NB. numeric integration by adaptive quadrature
+NB.*adapt c Numeric integration by adaptive quadrature
 NB.
 NB. form: verb adapt int
 NB.   verb is the monadic function to be integrated.
@@ -91,8 +83,7 @@ NB.     [2]  tolerance (default 1e_8)
 NB.
 NB. result is the integral
 NB.
-NB. e.g.   43.75 = ^&3 adapt 3 4
-NB.
+NB. eg: 43.75 = ^&3 adapt 3 4
 adapt=: 2 : 0
 'lb ub t'=. 3{.y,1e_8
 a=. x simpson (lb,ub,8)
@@ -103,8 +94,7 @@ c=. -:lb+ub
 )
 
 NB. =========================================================
-NB. example
-0 : 0
+Note 'examples using each method'
 fn=: 3 : '(y^8)+(1 o.y)-y^7'
 r=. ''
 r=. r, 98611112.950182 14 -: fn integrate 0 10 12

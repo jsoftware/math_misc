@@ -1,5 +1,5 @@
 NB. math/misc/rsa
-NB. rsa.ijs    - RSA encryption
+NB. RSA encryption
 NB. version: 1.0.0
 NB.
 NB. method:
@@ -16,6 +16,9 @@ NB.   msg (PQ powermod) E   encodes msg
 NB.   msg (PQ powermod) D   decodes msg
 
 NB. =========================================================
+
+require 'math/misc/primutil'
+
 NB. example with small values for P and Q
 t1=: 3 : 0
 

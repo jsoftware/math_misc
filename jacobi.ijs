@@ -1,7 +1,11 @@
 NB. math/misc/jacobi
-NB. jacobi's method for eigenvalues and vectors
+NB. Jacobi's method for eigenvalues and vectors
 NB. version: 1.0.0
-NB.
+
+require 'math/misc/matutil'
+
+NB. =========================================================
+NB.*jacobi v Calculate eigenvalues and vectors using Jacobi's method
 NB. applies to real symmetric matrices only
 NB.
 NB. form: [tolerance] jacobi mat
@@ -9,10 +13,6 @@ NB.
 NB. default tolerance 1e_5
 NB.
 NB. returns: eigenvalues;eigenvectors
-
-require 'math/misc/matutil'
-
-NB. =========================================================
 jacobi=: 3 : 0
 1e_5 jacobi y
 :
@@ -59,7 +59,7 @@ inx=. \:r
 )
 
 NB. =========================================================
-NB. test for random matrices of size y (default 3)
+NB. Test for random matrices of size y (default 3)
 testjacobi=: 3 : 0
 r=. 2${.y,3
 mat=. (+|:)?r$10
@@ -69,4 +69,9 @@ b=. x *"1 y
 c=. a-b
 d=. (det mat),det b
 mat;d;clean each a;b;c
+)
+
+Note 'Example tests'
+testjacobi ''
+testjacobi 4 4
 )

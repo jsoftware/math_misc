@@ -2,20 +2,14 @@ NB. math/misc/simplex
 NB. Simplex method
 NB. version: 1.0.0
 NB.
-NB. simplex              simplex method
-NB.
-NB. see also simplexnr.ijs for the simplex method following
+NB. see also math/misc/simplexnr for the simplex method following
 NB. "Numerical Recipes in C"
 NB.
 NB. example description thanks to Henry H. Rich
 
-require 'math/misc/matutil'
-
-NB. =========================================================
-NB.*simplex v simplex method
+NB. simplex              simplex method
 NB.
-NB. example:
-NB.
+NB. Example:
 NB.    mat=: 1 _2 _3 0 0 0 , 0 4 1 1 0 12 ,: 0 2 5 0 1 15
 NB.    simplex mat
 NB. 1 0 0  0.2222222   0.5555556  11
@@ -92,6 +86,25 @@ NB.
 NB. In the example, the solution is
 NB. x[1] = 11 (final objective value), x[2]=2.5, x[3]=2
 
+require 'math/misc/matutil'
+
+NB. =========================================================
+NB.*simplex v Simplex method
+NB. eg:
+NB.    mat=: 1 _2 _3 0 0 0 , 0 4 1 1 0 12 ,: 0 2 5 0 1 15
+NB.    simplex mat
+NB. 1 0 0  0.2222222   0.5555556  11
+NB. 0 1 0  0.2777778 _0.05555556 2.5
+NB. 0 0 1 _0.1111111   0.2222222   2
+NB.
+NB. The example corresponds to the problem:
+NB.
+NB. Maximize
+NB.   2x[2] + 3x[3]
+NB. subject to the constraints
+NB.   4x[2] +  x[3] <: 12
+NB.   2x[2] + 5x[3] <: 15
+NB. See the 'math/misc/simplex' script for full description
 simplex=: 3 : 0
 min=. i. <./
 m=. y

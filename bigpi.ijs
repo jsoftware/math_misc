@@ -1,13 +1,12 @@
 NB. math/misc/bigpi
-NB. calculate several digits of pi
+NB. Calculate several digits of pi
 NB. from Borwein
 NB. version: 1.0.0
-NB.
-NB. each step adds about 14 digits of precision
 
-NB. y = number of steps
-NB.
-NB. e.g. y=72 (approx 1000 digits of pi)
+NB.*bigpi v Calculate pi to different levels of of precision
+NB. y is: number of steps
+NB.       each step adds about 14 digits of precision
+NB. eg: bigpi 72     (gives approx 1000 digits of pi)
 bigpi=: 3 : 0
 a=. 545140134x
 b=. 640320x ^ 3

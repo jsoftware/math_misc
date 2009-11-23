@@ -1,7 +1,7 @@
 NB. math/misc/matutil
-NB. matrix utilities
+NB. Matrix utilities
 NB. version: 1.0.0
-NB.
+
 NB. band          b band M = zero all but b band of M
 NB. cond          condition number of matrix
 NB. diag          diagonal of matrix
@@ -23,36 +23,41 @@ NB. rowshear      (i,j,n) rowshear M  - multiply row j by n and add to row i
 require 'math/misc/mathutil'
 require 'math/misc/makemat'
 
+NB.*diag v Diagonal of matrix
 diag=: (<0 1)&|:
+
+NB.*invsut v Invert square upper-triangular matrix
 invsut=: 128!:1
+
+NB.*minors v minors of matrix
 minors=: 1&(|:\.)"2^:2	
 
 NB. =========================================================
-NB. band    b band M  - zero all but b band of M, e.g.
+NB.*band v b band M  - zero all but x bands of matrix y
+NB. eg:
 NB.     0 1 band 3 3$5
 NB.  5 5 0
 NB.  0 5 5
 NB.  0 0 5
 band=: ] * +./@((,@[ +"0 1 i.@#@]) =/ i.@#@])
 
-NB. =========================================================
-NB. cond          condition number of matrix
-NB. large when matrix is ill-conditioned, e.g.
-NB.     cond hilbertmat 5
-NB.  480849
+NB.*cond v Condition number of matrix
+NB. large when matrix is ill-conditioned
+NB. eg: 480849 = cond hilbertmat 5
 cond=: *&(+/&.(*:"_)@,) %.
 
 NB. =========================================================
-NB. pivot  (row,col) pivot M
+
+NB.*pivot v Pivot at row, column
+NB. form: (row,col) pivot M
 pivot=: 4 : 0
 'r c'=. x
 col=. c{"1 y
 y - (col-r=i.#y) */ (r{y)%r{col
 )
 
-NB. =========================================================
-NB. ppivot  (row,col) ppivot M   - partial pivot
-NB.
+NB. ppivot v Partial pivot at row, column
+NB. form: (row,col) ppivot M
 NB. differences from pivot:
 NB.   - the pivot element is left unchanged (pivot sets it to 1)
 NB.   - only columns below the pivot element are modifed
@@ -69,25 +74,38 @@ NB. coltake       cols coltake M      - take cols from M
 NB. rowdrop       rows rowdrop M      - drop rows from M
 NB. rowdrop       rows rowtake M      - take rows from M
 
+NB.*coldrop v Drop cols from M
+NB. form: cols coldrop M
 coldrop=: <@<@<@[ {"1 ]
+
+NB.*coltake v Take cols from M
+NB. form: cols coltake M
 coltake=: {"1
+
+NB.*rowdrop v Drop rows from M
+NB. form: rows rowdrop M
 rowdrop=: <@<@<@[ { ]
+
+NB.*rowtake v Take rows from M
+NB. form: rows rowtake M
 rowtake=: {
 
 NB. =========================================================
-NB. rowswap
+
+NB.*rowswap v Swap rows i and j
+NB. form: (i,j) rowswap M
 rowswap=: <@[ C. ]
 
-NB. =========================================================
-NB. rowscale
+NB.*rowscale v Multiply row i by n
+NB. form: (i,n) rowscale M
 NB. or: ({:@[ * {.@[ { ])`({.@[)`]}
 rowscale=: 4 : 0
 'i n'=. x
 (n * i{y) i } y
 )
 
-NB. =========================================================
-NB. rowshear
+NB.*rowshear v Multiply row j by n and add to row i
+NB. form: (i,j,n) rowshear M
 NB. or: (+/@(1&,@{:@[ * (}:@[) { ]))`({.@[)`]}
 rowshear=: 4 : 0
 'i j n'=. x

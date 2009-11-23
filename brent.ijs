@@ -2,8 +2,11 @@ NB. math/misc/brent
 NB. Brent's method in J
 NB. (from J. Patrick Harrington)
 NB. version: 1.0.0
-NB.
-NB. brent       (adverb)
+
+NB.*brent a Adverb to solve  f(x) = y0  by Brent's method.
+NB. form: f brent (a,b,tol,y0) gives x0 such that f(x0) = y0
+NB. Root must lie between a & b; tol = soln. tolerance
+NB. Adapted from 'Numerical Recipes', p 253
 NB.
 NB. For example, let f(x) = cos(x) - x
 NB.     f=. 2&o. - ]
@@ -13,13 +16,6 @@ NB.     f x0
 NB.  0.2
 NB.     0.2 - f x0
 NB.  _3.97182e_13
-
-NB. =========================================================
-NB. Adverb to solve  f(x) = y0  by Brent's method.
-NB. f brent (a,b,tol,y0) gives x0 such that f(x0) = y0.
-NB. Root must lie between a & b; tol = soln. tolerance
-NB. Adapted from 'Numerical Recipes', p 253
-NB. ---------------------------------------------------------
 brent=: 1 : 0
 itmax=. 100        NB. maximum iterations
 eps=. 3e_14        NB. ~ floating point precision

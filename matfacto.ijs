@@ -1,18 +1,17 @@
 NB. math/misc/matfacto
-NB. matrix factorization
+NB. Matrix factorization
 NB. version: 1.0.0
-NB.
+
 NB. choleski        Choleski decomposition
 NB. lud             LU decomposition of matrix
 NB. qrd             QR decomposition of matrix
 
 require 'math/misc/linear'
 
-NB. choleski decomposition
+NB. =========================================================
+NB.*choleski v Choleski decomposition of matrix y
 NB. a = l x +|:l=. choleski x
 NB. a =: a +/ .*
-
-NB. =========================================================
 choleski=: 3 : 0
 mp=. +/ .*
 n=. #a=. y
@@ -29,7 +28,7 @@ end.
 )
 
 NB. =========================================================
-NB. lud   - LU decomposition of matrix
+NB.*lud v LU decomposition of matrix y
 NB. returns 3 elements: L U P where
 NB.   L is lower triangular
 NB.   U is upper triangular
@@ -48,6 +47,6 @@ l;u;p
 )
 
 NB. =========================================================
-NB. qrd  - QR decomposition of matrix
+NB.*qrd v QR decomposition of matrix y
 NB. result has 2 elements: Hermitian matrix;square upper triangular matrix
 qrd=: 128!:0
