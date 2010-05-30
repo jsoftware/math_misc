@@ -1,4 +1,6 @@
-NB. trigonometric functions
+NB. math/misc/trig
+NB. Trigonometric functions
+NB. version: 1.0.0
 
 NB.*sin v sin
 NB.*cos v cos
