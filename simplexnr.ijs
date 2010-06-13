@@ -1,5 +1,5 @@
 NB. math/misc/simplexnr
-NB. Simplex method
+NB. Simplex method (after Numerical Recipes in C)
 NB. version: 1.0.0
 NB.
 NB. see also math/misc/simplex

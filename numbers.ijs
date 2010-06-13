@@ -1,5 +1,5 @@
 NB. math/misc/numbers
-NB. Various number definitions
+NB. Various number definitions (Stirling, Euler ...)
 NB. version: 1.0.0
 
 NB.  bell              Bell numbers

@@ -1,5 +1,5 @@
 NB. math/misc/makemat
-NB. Make various matrices
+NB. Make various standard matrices
 NB. version: 1.0.0
 
 NB. bandmat       band matrix

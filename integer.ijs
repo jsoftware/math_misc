@@ -1,5 +1,5 @@
 NB. math/misc/integer
-NB. Various integer definitions
+NB. Verbs to generate various integer sequences
 NB. version: 1.0.0
 
 NB. inta   augmented integers     inta 4    is  1 2 3 4

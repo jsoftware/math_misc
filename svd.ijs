@@ -4,7 +4,7 @@ NB. version: 1.0.0
 NB.
 NB. for real matrices only
 
-require '~system\packages\math\jacobi.ijs'
+require 'math/misc/jacobi'
 
 NB. =========================================================
 NB.*svd v Singular value decomposition of matrix y

@@ -1,5 +1,5 @@
 NB. math/misc/rsa
-NB. RSA encryption
+NB. Examples of RSA encryption
 NB. version: 1.0.0
 NB.
 NB. method:
