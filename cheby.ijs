@@ -38,7 +38,7 @@ chebev =: 4 : 0"1 _
 'coeffs minmax' =. x
 mapy2 =. _1 ,.~ +: mapy =. (+: y) ((- +/) % -~/@]) minmax
 sumpoly =. ((+  +/"1@(mapy2&*)) ,. {."1@])/ 1 |.!.0 coeffs  NB. result is d,dd
-(mapy(,"1)_1 0.5) +/@:*"1 sumpoly,"1{.coeffs
+(mapy(,"0 1)_1 0.5) +/@:*"1 sumpoly,"1{.coeffs
 )
 
 
