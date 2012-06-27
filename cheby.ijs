@@ -19,7 +19,7 @@ NB. y is the range over which the function is to be approximated (low,high)
 NB. You should calculate the coefficients to considerably higher degree than you
 NB. plan to use (30 to 50, say), and then truncate the resulting series
 NB. ex: 6 {. 30 (^ chebft) _1 1
-chebft =: adverb define
+chebft =: adverb define ("0 1)
 :
 f =. u 0.5 * (+/y) - (-/y) * 2 o. o. (0.5 + i. x) % x
 (2 % x) * +/ f * 2 o. o. (0.5 + i. x) *"0 1 (i. x) % x
@@ -36,8 +36,8 @@ NB. but the first, and Ti is the ith Chebyshev polynomial.  In this verb the sum
 NB. is made using Clenshaw's recurrence.
 chebev =: 4 : 0"1 _
 'coeffs minmax' =. x
-mapy2 =. _1 ,.~ +: mapy =. (+: y) ((- +/) % -~/@]) minmax
-sumpoly =. ((+  +/"1@(mapy2&*)) ,. {."1@])/ 1 |.!.0 coeffs  NB. result is d,dd
+mapy2 =. _1 ,~"0 +: mapy =. (+: y) ((- +/) % -~/@]) minmax
+sumpoly =. ((+  +/"1@(mapy2&*)) ,"0 {."1@])/ 1 |.!.0 coeffs  NB. result is d,dd
 (mapy(,"0 1)_1 0.5) +/@:*"1 sumpoly,"1{.coeffs
 )
 
