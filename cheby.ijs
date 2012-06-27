@@ -37,7 +37,11 @@ NB. is made using Clenshaw's recurrence.
 chebev =: 4 : 0"1 _
 'coeffs minmax' =. x
 mapy2 =. _1 ,~"0 +: mapy =. (+: y) ((- +/) % -~/@]) minmax
-sumpoly =. ((+  +/"1@(mapy2&*)) ,"0 {."1@])/ 1 |.!.0 coeffs  NB. result is d,dd
+NB. The following is a little tricky.  In the main verb, x is the new coeff (a scalar) and y is the
+NB. accumulated results from previous coeffs (shape ($y),2 where each 1-cell is (d,dd) in the NR code).
+NB. For the first execution, x is cn and y is scalar 0.  This scalar 0 is replicated to the shape of mapy
+NB. to create the expanded first result; this step corresponds to d =. dd =. 0 in the NR code.
+sumpoly =. ((+  +/"1@(mapy2&*)) ,"0 {."1@])/ 1 |.!.0 coeffs  NB. result is (d,dd) for each scalar
 (mapy(,"0 1)_1 0.5) +/@:*"1 sumpoly,"1{.coeffs
 )
 
