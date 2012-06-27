@@ -12,6 +12,7 @@ NB.
 NB.   (2.53213 1.13032 0.271495 0.0443368 0.00547424 0.000542926;_1 1) chebev 0
 NB. 1.00004
 NB. These routines follow the algorithms from Numerical Recipes in C 1/e
+NB. Henry H. Rich, June 2012
 
 NB.*chebft a Chebyshev coefficients
 NB. u is the verb to be approximated; x is the number of coefficients to calculate;
