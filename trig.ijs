@@ -15,6 +15,8 @@ NB.*arcsinh v arcsinh
 NB.*arccosh v arccosh
 NB.*arctanh v arctanh
 
+NB.*atan2 v atan2
+
 NB.*pi n pi
 
 NB.*dfr v degrees from radians
@@ -43,6 +45,8 @@ arctan=: _3&o.
 arcsinh=: _5&o.
 arccosh=: _6&o.
 arctanh=: _7&o.
+
+atan2=: 12&o.
 
 pi=: 1p1
 
