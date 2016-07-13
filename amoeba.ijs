@@ -53,6 +53,7 @@ simplex =. y
 NB. Calculate the initial volume of the simplex, and the termination condition.  But
 NB. if the termination condition is boxed, i. e. is the number of shrinks to allow,
 NB. don't bother with the volume.
+
 if. 32 = 3!:0 n do.
   excessvol =. >n
 else.
