@@ -37,11 +37,11 @@ makemat.ijs Make various standard matrices
 gcd.ijs Calculate GCD
 )
 
-VERSION=: '1.0.1'
+VERSION=: '1.2.1'
 
 RELEASE=: ''
 
-FOLDER=: 'math_misc'
+FOLDER=: 'math/misc'
 
 FILES=: 0 : 0
 gamesolver.ijs

@@ -30,7 +30,7 @@ NB.*invsut v Invert square upper-triangular matrix
 invsut=: 128!:1
 
 NB.*minors v minors of matrix
-minors=: 1&(|:\.)"2^:2	
+minors=: 1&(|:\.)"2^:2
 
 NB. =========================================================
 NB.*band v b band M  - zero all but x bands of matrix y
