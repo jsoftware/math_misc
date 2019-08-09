@@ -28,4 +28,3 @@ randomintd=: 3 : '10 #. (y{.1) + ? 10x - y{.1'
 
 NB.*timesmod a x (n timesmod) y computes n|x*y
 timesmod=: 1 : 'x&|@*'
-

@@ -1,6 +1,6 @@
 NB. math/misc/legendre
 NB. Legendre symbol and quadratic residues
-NB. version: 1.0.0
+NB. version: 1.0.1
 
 NB. legendre         Legendre symbol (n/p) for integer n, odd prime p
 NB. quadres          quadratic residues of p
@@ -24,7 +24,7 @@ NB. =========================================================
 NB.*legendre v Legendre symbol (n/p) for integer n, odd prime p
 NB.
 NB. form: p legendre n
-NB. eg: (>:i.7) legendre 7
+NB. eg: 7 legendre >:i.7
 legendre=: 4 : 0 "0
 p=. x
 n=. p|y

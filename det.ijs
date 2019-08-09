@@ -5,7 +5,7 @@ NB. version: 1.0.0
 require 'math/misc/linear'
 
 NB.*det v Determinants of a matrix by recursive expansion of minors
-NB.  only efficient for small matrices 
+NB.  only efficient for small matrices
 det=: -/ .*
 
 NB.*detm v Determinants of square matrix by Gauss elimination

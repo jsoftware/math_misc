@@ -57,4 +57,3 @@ NB. corresponding basic functions
 sind=: sin @ rfd
 cosd=: cos @ rfd
 tand=: tan @ rfd
-

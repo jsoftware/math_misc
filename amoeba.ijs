@@ -139,7 +139,7 @@ NB.
 NB. If x is a list, of shape #y , a shape (,~ #x) identity matrix
 NB. is generated and multiplied by x, then added to y and appended to y,
 NB. again forming >: #y points, with volume (*/x) * (% ! #y)
-NB. 
+NB.
 NB. x can be a scalar, in which case it is multiplied by the shape ,~ y identity
 NB. matrix and added to y, the appended to y, generating >: #y points.
 NB. Note that in this case the result has volume (x&^ * %@!) #y, which grows very

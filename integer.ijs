@@ -53,7 +53,7 @@ NB. _3j_1 _2j_1 _1j_1 0j_1 1j_1 2j_1 3j_1
 NB.    _3    _2    _1    0    1    2    3
 NB.  _3j1  _2j1  _1j1  0j1  1j1  2j1  3j1
 
-NB.*inta v Augmented integers     
+NB.*inta v Augmented integers
 NB. eg: inta 4    is  1 2 3 4
 inta=: >:@i.
 

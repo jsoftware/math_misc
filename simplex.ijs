@@ -115,7 +115,7 @@ while.
 do.
   t=. {:"1 m
   d=. c{"1 m
-  f=. (0 > d){0 _	
+  f=. (0 > d){0 _
   r=. min f + t % d
   m=. (r,c) pivot m
 end.

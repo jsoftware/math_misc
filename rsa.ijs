@@ -1,6 +1,6 @@
 NB. math/misc/rsa
 NB. Examples of RSA encryption
-NB. version: 1.0.0
+NB. version: 1.0.1
 NB.
 NB. method:
 NB.   P & Q are primes
@@ -11,14 +11,18 @@ NB. here:
 NB.     the public key is:  PQ,E   (i.e. a pair of numbers)
 NB.     the private key is: D
 NB.
-NB. then:
-NB.   msg (PQ powermod) E   encodes msg
-NB.   msg (PQ powermod) D   decodes msg
-
-NB. =========================================================
+NB. then if msg is a list of integers:
+NB.   msg (PQ powermod) E   is   encode msg
+NB.   msg (PQ powermod) D   is   decode msg
+NB.
+NB. e.g.
+NB.    t2''
+NB.    decode encode 233 6728
+NB. 233 6728
 
 require 'math/misc/primutil'
 
+NB. =========================================================
 NB. example with small values for P and Q
 t1=: 3 : 0
 
