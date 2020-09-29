@@ -18,7 +18,7 @@ NB.*mp v Matrix product of x and y
 mp=: +/ .*
 
 NB.*powermod a x (n powermod) y computes n|x^y
-powermod=: 1 : 'x&|@^'
+powermod=: 1 : 'm&|@^'
 
 NB.*randomint v Random integer in range 0, <: 10^y
 randomint=: 3 : '10 #. ? y $ 10x'
@@ -27,4 +27,4 @@ NB.*randomintd v Random integer with y digits
 randomintd=: 3 : '10 #. (y{.1) + ? 10x - y{.1'
 
 NB.*timesmod a x (n timesmod) y computes n|x*y
-timesmod=: 1 : 'x&|@*'
+timesmod=: 1 : 'm&|@*'

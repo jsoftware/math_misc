@@ -22,10 +22,10 @@ NB. timesmod           x (n timesmod) y
 NB. =========================================================
 
 NB. powermod a   x (n powermod) y
-powermod=: 1 : 'x&|@^'
+powermod=: 1 : 'm&|@^'
 
 NB. timesmod a   x (n timesmod) y
-timesmod=: 1 : 'x&|@*'
+timesmod=: 1 : 'm&|@*'
 
 NB.*prevprime v Previous prime number to y
 prevprime=: _4 & p:
