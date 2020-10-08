@@ -10,20 +10,20 @@ require 'math/misc/linear'
 
 NB. =========================================================
 NB.*choleski v Choleski decomposition of matrix y
-NB. a = l x +|:l=. choleski x
-NB. a =: a +/ .*
+NB. given L =. choleski A
+NB.       A -: L mp h L  (mp is matrix product and h is conjugate transpose)
 choleski=: 3 : 0
-mp=. +/ .*
-n=. #a=. y
-if. 1>:n do.
-  13!:8(,(a=|a)>0=a)}.12
-  %:a
+mp=. +/ .*            NB. matrix product
+h=. +@|:              NB. conjugate transpose
+r=. #A=. y
+if. 1>:r do.
+  assert. (A=|A)>0=A  NB. check positive definite
+  %:A
 else.
-  p=. >.n%2 [ q=. <.n%2
-  x=. (p,p){.a [ y=. (p,-q){.a [ z=. (-q,q){.a
-  l0=. choleski x
-  l1=. choleski z-(t=. (+|: y) mp %.x) mp y
-  l0,(t mp l0),.l1
+  'X Y t Z'=. , (;~ r $ (>. -:r){.1) <;.1 A
+  L0=. choleski X
+  L1=. choleski Z-(T=. (h Y) mp %.X) mp Y
+  L0,(T mp L0),.L1
 end.
 )
 
@@ -38,12 +38,12 @@ NB. The original matrix is: (L mp U) %. P
 lud=: 3 : 0
 r=. #y
 ir=. idmat r
-'a b'=. 2 {. gauss_elimination y,.ir
-u=. clean (r,r){.a
-f=. (0,r)}.a
-l=. clean b{%.f
-p=. b{ir
-l;u;p
+'A b'=. 2 {. gauss_elimination y,.ir
+U=. clean (r,r){.A
+f=. (0,r)}.A
+L=. clean b{%.f
+P=. b{ir
+L;U;P
 )
 
 NB. =========================================================
