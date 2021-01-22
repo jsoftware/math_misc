@@ -5,6 +5,7 @@ NB. version: 1.0.0
 NB. choleski        Choleski decomposition
 NB. lud             LU decomposition of square matrix
 NB. LU              LU decomposition of square/wide matrix
+NB. LUcheck         as for LU with checks
 NB. qrd             QR decomposition of matrix
 
 require 'math/misc/linear'
@@ -12,7 +13,8 @@ require 'math/misc/linear'
 NB. =========================================================
 NB.*choleski v Choleski decomposition of matrix y
 NB. given L =. choleski A
-NB.       A -: L mp h L  (mp is matrix product and h is conjugate transpose)
+NB.       A -: L mp h L
+NB. see https://code.jsoftware.com/wiki/Essays/Cholesky_Decomposition
 choleski=: 3 : 0
 mp=. +/ .*            NB. matrix product
 h=. +@|:              NB. conjugate transpose
