@@ -54,7 +54,7 @@ NB. otherwise sort and pivot:
   end.
   j=. >:j
 end.
-q=. (,rws&-.) C. p
+q=. (,rws&-.) C. boxopen p
 m;q;>p
 )
 
