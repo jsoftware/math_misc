@@ -21,41 +21,42 @@ require 'math/misc/matutil'
 
 NB. =========================================================
 NB.*gauss_elimination v Gauss elimination (partial pivoting)
-NB. y is: matrix
+NB. y is: (augmented) matrix
 NB. x is: optional minimum tolerance, default 1e_15.
 NB.   If a column below the current pivot has numbers of magnitude all
 NB.   less then x, it is treated as all zeros.
 NB.
 NB. returns 3 elements: matrix;permutation;row swaps
-NB.        where: permutation{matrix restores the original row order
+NB.        where: matrix is in row-echelon form
+NB.        permutation{matrix restores the original row order
 NB.        row swaps is a matrix of rows that were swapped
 gauss_elimination=: 3 : 0
 1e_15 gauss_elimination y
 :
-m=. y
-'r c'=. $m
+A=. y
+'r c'=. $A
 rws=. i.r
 i=. j=. 0
 p=. ''
 max=. i.>./
 while. (i<r-1) *. j<c do.
-  k=. max col=. | i}. j{"1 m
+  k=. max col=. | i}. j{"1 A
 NB. if all col < tol, set to 0:
   if. 0 < x-k{col do.
-    m=. 0 (<(i}.rws);j) } m
+    A=. 0 (<(i}.rws);j) } A
 NB. otherwise sort and pivot:
   else.
     if. k do.
       p=. p,t=. <i,i+k
-      m=. t C. m
+      A=. t C. A
     end.
-    m=. (i,j) ppivot m
+    A=. (i,j) ppivot A
     i=. >:i
   end.
   j=. >:j
 end.
 q=. (,rws&-.) C. boxopen p
-m;q;>p
+A;q;>p
 )
 
 NB. =========================================================
@@ -73,40 +74,42 @@ back_sub=: 4 : 0
 
 NB. =========================================================
 NB.*gauss_jordan v Gauss-Jordan elimination (full pivoting)
-NB. y is: matrix
+NB. y is: (augmented) matrix
 NB. x is: optional minimum tolerance, default 1e_15.
 NB.   If a column below the current pivot has numbers of magnitude all
 NB.   less then x, it is treated as all zeros.
+NB. eg: gauss_jordan Matrix
 NB. if used to compute matrix inverse, first stitch on the identity matrix
+NB. eg: gauss_jordan (,. idmat@#) Matrix
 gauss_jordan=: 3 : 0
 1e_15 gauss_jordan y
 :
-m=. y
-'r c'=. $m
+A=. y
+'r c'=. $A
 rws=. i.r
 i=. j=. 0
 max=. i.>./
 while. (i<r) *. j<c do.
-  k=. max col=. | i}. j{"1 m
+  k=. max col=. | i}. j{"1 A
 NB. if all col < tol, set to 0:
   if. 0 < x-k{col do.
-    m=. 0 (<(i}.rws);j) } m
+    A=. 0 (<(i}.rws);j) } A
 NB. otherwise sort and pivot:
   else.
     if. k do.
-      m=. (<i,i+k) C. m
+      A=. (<i,i+k) C. A
     end.
-    m=. (i,j) pivot m
+    A=. (i,j) pivot A
     i=. >:i
   end.
   j=. >:j
 end.
-m
+A
 )
 
 NB. =========================================================
-NB.*gauss_seidel v Solves Ax=B for matrix A, vector B
-NB. y is: A;B
+NB.*gauss_seidel v Solves Ax=b for (diagonally dominant) matrix A, vector b
+NB. y is: A;b
 NB. x is: optional max iterations (20), error tolerance (1e_8), sor (1)
 NB.     sor = successive-over-relaxation constant, between 1 and 2.
 NB.         Default 1 means not used.
@@ -116,22 +119,19 @@ NB. returns: table of convergents
 gauss_seidel=: 3 : 0
 '' gauss_seidel y
 :
-'A B'=. y
+'A b'=. y
 ('count';'tol';'sor')=. x,(#x) }. 20 1e_8 1
 max=. (i.>./)@|
 
-M=. A * >:/~ i.#A
-N=. M-A
+M=. (] * ltmat@#) A
 Mi=. %.M
 
-n=. Mi mp N
-b=. Mi mp B
-t=. b
-r=. ,: t
+N=. Mi mp M-A
+b=. Mi mp b
+r=. ,: t=. b
 
 while. count=. <:count do.
-  s=. t
-  t=. (sor*b + n mp s) + s*-.sor
+  t=. (sor * b + N mp t) + t * -.sor
   r=. r,t
   if.
     big=. (<_1 _2;max t){r
@@ -141,29 +141,24 @@ end.
 )
 
 NB. =========================================================
-NB.*jacobi_iteration v Solves Ax=B for matrix A, vector B
-NB. y is: A;B
+NB.*jacobi_iteration v Solves Ax=b for (diagonally dominant) matrix A, vector b
+NB. y is: A;b
 NB. x is: optional max iterations (20), error tolerance (1e_8)
 NB. returns: table of convergents
 jacobi_iteration=: 3 : 0
 '' jacobi_iteration y
 :
-'A B'=. y
+'A b'=. y
 ('count';'tol')=. x,(#x) }. 20 1e_8
 max=. (i.>./)@|
 
-m=. diag A
-M=. m * idmat #m
-N=. M-A
-
-n=. N % m
-b=. B % m
-t=. b
-r=. ,: t
+d=. diag A
+N=. (d %~ diagmat - ]) A
+b=. d %~ b
+r=. ,: t=. b
 
 while. count=. <:count do.
-  s=. t
-  t=. b + n mp s
+  t=. b + N mp t
   r=. r,t
   if.
     big=. (<_1 _2;max t){r
