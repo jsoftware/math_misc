@@ -169,10 +169,14 @@ end.
 
 NB. =========================================================
 Note 'testing...'
- (-/ . *  -: determinant) >:?.5 5$10
  NB. solve Ax=b for x
  A=: 6 1 _2 0 0, 0 4 0 _1 0, 1 _1 5 2 1, _1 0 1 5 0,: 0 1 0 _1 3
- B=: _2.2 _4.4 16.5 _19.8 18.7
- jacobi_iteration A;B
- gauss_seidel A;B
+ b=: _2.2 _4.4 16.5 _19.8 18.7
+ gauss_elimination A,.b        NB. get row-echelon form of A,.b
+ (}:"1 back_sub {:"1) 0{:: gauss_elimination A,.b  NB. solve for x
+ gauss_jordan A,.b             NB. solve for x
+ gauss_jordan (,. idmat@#) A   NB. calc inverse of A
+ b +/ .*~ (# }."1 gauss_jordan@(,. idmat@#)) A   NB. solve for x
+ jacobi_iteration A;b          NB. solve for x
+ gauss_seidel A;b              NB. solve for x
 )

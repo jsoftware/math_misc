@@ -14,3 +14,7 @@ detm=: 3 : 0
 'm p s'=. gauss_elimination y
 (*/ diag m) * _1 ^ #s
 )
+
+Note 'Testing ...'
+(det  -: detm) >:?.5 5$10
+)
