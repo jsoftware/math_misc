@@ -4,6 +4,7 @@ NB. version: 1.0.0
 
 NB. det           determinant of matrix y
 NB. mp            M mp N  = matrix product of M and N
+NB. h             conjugate transpose of matrix y
 NB. powermod      x (n powermod) y computes n|x^y
 NB. randomint     random integer in range 0, <: 10^y
 NB. randomintd    random integer with y digits
@@ -16,6 +17,9 @@ det=: -/ .*
 
 NB.*mp v Matrix product of x and y
 mp=: +/ .*
+
+NB.*h v Conjugate transpose of y
+h=: +@|:
 
 NB.*powermod a x (n powermod) y computes n|x^y
 powermod=: 1 : 'm&|@^'

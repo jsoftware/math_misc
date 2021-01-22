@@ -7,6 +7,8 @@ NB. elimination functions:
 NB.   gauss_elimination    Gauss elimination
 NB.   gauss_jordan         Gauss-Jordan elimination
 NB.
+NB.   back_sub             Back substitution
+NB.
 NB. =========================================================
 NB. iterative methods for solving Ax=B
 NB.   gauss_seidel         Gauss-Seidel iteration
@@ -54,6 +56,19 @@ NB. otherwise sort and pivot:
 end.
 q=. (,rws&-.) C. p
 m;q;>p
+)
+
+NB. =========================================================
+NB.*back_sub v Uses back substitution to solve Ax=b for matrix A (x) and vector b (y)
+NB. y is: vector
+NB. x is: matrix in row-echelon form
+NB. eg: (}:"1 back_sub {:"1) 0{:: gauss_elimination A ,. b
+back_sub=: 4 : 0
+  A=. (% diag) x
+  b=. y (% diag) x
+  for_i. i. -#b do.
+    b=. ((i{b) - b +/@:*&((i+1)&}.) i{A) i} b
+  end.
 )
 
 NB. =========================================================
