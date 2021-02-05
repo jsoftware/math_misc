@@ -37,7 +37,7 @@ svd.ijs Singular value decomposition
 trig.ijs Trigonometric functions
 )
 
-VERSION=: '1.2.4'
+VERSION=: '1.2.5'
 
 RELEASE=: ''
 

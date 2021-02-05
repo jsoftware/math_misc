@@ -7,7 +7,7 @@ NB. eg:  fermatfactor */ x: p:11000 12000
 NB. x is: optional maximum iterations, default 10000
 NB. y is: number to be factored
 NB.
-NB. starts with x=. >.%:n, and increments by 2 until done
+NB. starts with s=. >.%:n, and increments by 2 until done
 NB.
 NB. efficient only where there is a factor near the square root
 NB.
@@ -20,10 +20,10 @@ NB. looks for a,b where n is (a^2) - b^2
 fermatfactor=: 3 : 0
 10000 fermatfactor y
 :
-x=. >.@%: x: y
-u=. >:+:x
+s=. >.@%: x: y
+u=. >:+:s
 v=. 1
-r=. (*:x)-y
+r=. (*:s)-y
 c=. 0
 while. c < x do.
   c=. >: c
