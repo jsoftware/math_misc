@@ -5,6 +5,7 @@ NB. version: 1.0.0
 NB. band          b band M = zero all but b band of M
 NB. cond          condition number of matrix
 NB. diag          diagonal of matrix
+NB. amenddiag     amend the diagonal of matrix y with list x
 NB. diagdom       test if matrix is diagonally dominant
 NB. invsut        invert square upper-triangular matrix
 NB. minors        minors of matrix
@@ -26,6 +27,9 @@ require 'math/misc/makemat'
 
 NB.*diag v Diagonal of matrix
 diag=: (<0 1)&|:
+
+NB.amenddiag v Amend the diagonal of matrix y with list x
+amenddiag=: [`(,.~@i.@(<./)@$@])`]}
 
 NB.*diagdom v Test if matrix is diagonally dominant
 diagdom=: *./@(diag >: [: +/"1 ] * -.@idmat@#)@:|
